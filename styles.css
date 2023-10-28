@@ -105,6 +105,11 @@ button {
     text-align: left; /* Align text to the left */
 }
 
+.title a {
+    text-decoration: none;
+    color: white;
+}
+
 /* Styles for the links */
 .links {
     flex: 1; /* Grow as much as possible to the right */

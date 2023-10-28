@@ -9,17 +9,19 @@
 
 <body>
 <!--Top contents contained in here, title along with header links-->
-    <div class="top-cont">
-        <div class="title">Tasky</div>
-        <div class="links">
-            <a href="#">Profile</a>
-            <a href="#">Completed Tasks</a>
-            <a href="#">FAQ</a>
-        </div>
+<div class="top-cont">
+    <div class="title">
+        <a href="index.html">Tasky</a>
     </div>
+    <div class="links">
+        <a href="profile.html">Profile</a>
+        <a href="completed-tasks.html">Completed Tasks</a>
+        <a href="faq.html">FAQ</a>
+    </div>
+</div>
 <!--Task adding contents contained in here, task input box, button, and task count-->
     <div class="content">
-        <div class="font"><h1>Welcome To Tasky!</h1></div>
+        <div class="font"><h1>What are you doing today?</h1></div>
         <div class="buttons">
             <input type="text" id="taskInput" placeholder="Add a new task">
             <button id="addTask">Add Task</button>
@@ -28,9 +30,6 @@
             </ul>
         </div>
         <div class="taskCount" id="taskCount">Task Count: 0</div>
-        <ul id="completedTaskList">
-            <!-- Completed tasks will be added here -->
-        </ul>
     </div>
 
 </body>

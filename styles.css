@@ -1,69 +1,88 @@
+/* Reset default styles */
 html {
-    height:100%;
+    height: 100%;
+    font-size: 16px; /* Set a base font size for better scalability */
 }
 
+/* Define custom fonts */
+@font-face {
+    font-family: "Quicksand";
+    src: url(Quicksand-Regular.ttf);
+}
+
+/* Apply styles to the content area */
+.content {
+    font-family: "Quicksand";
+    color: white; /* Text color for the content area */
+    text-align: center; /* Center the text within the content area */
+}
+
+/* Apply styles to unordered lists */
 ul {
-    color: white;
+    list-style: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
 }
 
+/* Task Count style */
+.taskCount {
+    color: white;
+    font-size: 18px; /* Increase the font size for better visibility */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+/* Styling for the body element */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
-    background-image: url("/images/Background.jpeg");
+    background: black url("/images/Background.jpeg") no-repeat center center fixed;
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-   
-    background-attachment: fixed;
-}
-h1 {
-    font-size: 24px; /* Title font size */
-    color: black; /* Title text color */
+    /* Other background properties have been combined into a single shorthand property for simplicity */
 }
 
+/* Header (h1) styles */
+h1 {
+    font-size: 24px;
+    color: black;
+}
+
+/* Form styles */
 form {
     margin-top: 20px;
 }
 
+/* Label styles */
 label {
     display: block;
-    font-size: 16px; /* Label font size */
-    color: #ffb8a9; /* Label text color */
+    font-size: 16px;
+    color: #ffb8a9;
     margin-bottom: 5px;
 }
 
-input[type="text"], input[type="password"] {
+/* Input field styles */
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 8px;
-    font-size: 16px; /* Input field font size */
-    border: 1px solid #ffb8a9; /* Input field border color */
+    font-size: 16px;
+    border: 1px solid #ffb8a9;
     border-radius: 5px;
 }
 
+/* Button styles */
 button {
     align-items: center;
-    background-color: #f8ca64; /* Button background color */
-    color: #000; /* Button text color */
-    font-size: 18px; /* Button font size */
+    background-color: #f8ca64;
+    color: #000;
+    font-size: 18px;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* You can add more styles for additional elements as needed */
-
-/* Example: Styling a link (e.g., "Forgot Password?") */
-a {
-    text-decoration: none;
-    color: #f8ca64; /* Link color */
-}
-
-a:hover {
-    color: #ffb8a9; /* Link color on hover */
-}
+/* Specific styles for elements with the class "addTask" */
 .addTask {
     display: flex;
+    /* Add any specific styles for elements with this class */
 }

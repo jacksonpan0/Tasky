@@ -12,8 +12,10 @@ html {
 
 /* Apply styles to the content area */
 .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     font-family: "Quicksand";
-    color: white; /* Text color for the content area */
     text-align: center; /* Center the text within the content area */
 }
 
@@ -25,16 +27,17 @@ ul {
 
 /* Task Count style */
 .taskCount {
-    color: white;
     font-size: 18px; /* Increase the font size for better visibility */
     margin: 10px 0; /* Add some margin for spacing */
 }
 
 /* Styling for the body element */
 body {
+    color: white; /* Text color for the links and title */
+    font-family: "Quicksand";
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
     background: black url("/images/Background.jpeg") no-repeat center center fixed;
     background-size: cover;
     /* Other background properties have been combined into a single shorthand property for simplicity */
@@ -43,7 +46,6 @@ body {
 /* Header (h1) styles */
 h1 {
     font-size: 24px;
-    color: black;
 }
 
 /* Form styles */
@@ -84,5 +86,35 @@ button {
 /* Specific styles for elements with the class "addTask" */
 .addTask {
     display: flex;
+    margin: auto;
     /* Add any specific styles for elements with this class */
+}
+
+.top-cont {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px; /* Add padding for spacing */
+    font-family: "Quicksand";
+}
+
+/* Styles for the title */
+.title {
+    flex: 1; /* Grow as much as possible to the left */
+    font-size: 24px;
+    text-align: left; /* Align text to the left */
+}
+
+/* Styles for the links */
+.links {
+    flex: 1; /* Grow as much as possible to the right */
+    display: flex;
+    justify-content: flex-end; /* Align links to the right */
+    gap: 20px; /* Add a gap between links for spacing */
+}
+
+.links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }

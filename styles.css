@@ -10,40 +10,18 @@ html {
     src: url(Quicksand-Regular.ttf);
 }
 
-/* Apply styles to the content area */
-.content {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    font-family: "Quicksand";
-    text-align: center; /* Center the text within the content area */
-}
-
-/* Apply styles to unordered lists */
-ul {
-    list-style: none; /* Remove default list bullets */
-    padding: 0; /* Remove default padding */
-}
-
-/* Task Count style */
-.taskCount {
-    font-size: 18px; /* Increase the font size for better visibility */
-    margin: 10px 0; /* Add some margin for spacing */
-}
-
-/* Styling for the body element */
+/* Global styling for common elements */
 body {
-    color: white; /* Text color for the links and title */
     font-family: "Quicksand";
+    color: white; /* Text color for the links and title */
+    background: black url("/images/Background.jpeg") no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: black url("/images/Background.jpeg") no-repeat center center fixed;
-    background-size: cover;
-    /* Other background properties have been combined into a single shorthand property for simplicity */
 }
 
-/* Header (h1) styles */
+/* Header styles */
 h1 {
     font-size: 24px;
 }
@@ -53,34 +31,25 @@ form {
     margin-top: 20px;
 }
 
-/* Label styles */
-label {
-    display: block;
-    font-size: 16px;
-    color: #ffb8a9;
-    margin-bottom: 5px;
-}
-
 /* Input field styles */
 input[type="text"],
 input[type="password"] {
     width: 100%;
     padding: 8px;
     font-size: 16px;
-    border: 1px solid #ffb8a9;
-    border-radius: 5px;
+    border: 1px grey;
+    border-radius: 10px;
 }
 
 /* Button styles */
 button {
-    align-items: center;
-    background-color: #f8ca64;
-    color: #000;
+    background-color: lightslategray;
     font-size: 18px;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px; 
     cursor: pointer;
+    margin-top: 10px;
 }
 
 /* Specific styles for elements with the class "addTask" */
@@ -90,6 +59,27 @@ button {
     /* Add any specific styles for elements with this class */
 }
 
+/* Content area styles */
+.content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center; /* Center the text within the content area */
+}
+
+/* Unordered list styles */
+ul {
+    list-style: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+}
+
+/* Task Count styles */
+.taskCount {
+    font-size: 18px; /* Increase the font size for better visibility */
+    margin: 10px 0; /* Add some margin for spacing */
+}
+
+/* Top container styles */
 .top-cont {
     display: flex;
     justify-content: space-between;
@@ -98,9 +88,12 @@ button {
     font-family: "Quicksand";
 }
 
-/* Styles for the title */
+/* Styles for the title and links */
+.title, .links {
+    flex: 1; /* Grow as much as possible */
+}
+
 .title {
-    flex: 1; /* Grow as much as possible to the left */
     font-size: 24px;
     text-align: left; /* Align text to the left */
 }
@@ -110,9 +103,7 @@ button {
     color: white;
 }
 
-/* Styles for the links */
 .links {
-    flex: 1; /* Grow as much as possible to the right */
     display: flex;
     justify-content: flex-end; /* Align links to the right */
     gap: 20px; /* Add a gap between links for spacing */

@@ -2,6 +2,7 @@
 const taskInput = document.getElementById('taskInput');
 const addTaskButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
+const completedList = document.getElementById('completedList');
 let taskLimit = 10;
 let taskAmount = 0;
 // Event listener for adding a new task
@@ -11,9 +12,9 @@ addTaskButton.addEventListener('click', function() {
         if(taskText.trim() !== '') {
             addTask(taskText);
             taskInput.value = '';
+            taskAmount++;
+            updateTaskCount();
         }
-        taskAmount++;
-        updateTaskCount();
     }
 });
 
@@ -25,10 +26,10 @@ taskInput.addEventListener('keydown', function(event) {
             if(taskText.trim() !== '') {
                 addTask(taskText);
                 taskInput.value = '';
+                taskAmount++;
+                updateTaskCount();
             }
         }
-        taskAmount++;
-        updateTaskCount();
     }
 });
 
@@ -43,8 +44,8 @@ function addTask(taskText) {
     const taskItem = document.createElement('li');
     taskItem.innerHTML = `
         ${taskText}
-        <button class="complete">Completed</button>
-        <button class="delete">Delete</button>
+        <button class="complete">✓</button>
+        <button class="delete">x</button>
     `;
     taskList.appendChild(taskItem);
 
@@ -57,11 +58,38 @@ function addTask(taskText) {
 
     // Add event listener to complete button
     taskItem.querySelector('.complete').addEventListener('click', function() {
-        // Handle task completion here, e.g., change the style, move to a completed list, etc.
-        // For now, let's just remove it
-        taskList.removeChild(taskItem);
+        markComplete(taskItem);
         taskAmount--;
         updateTaskCount();
     });
 }
 
+function markComplete(taskItem) {
+    completedList.appendChild(taskItem);
+    saveCompletedTask(taskItem.innerText);
+}
+
+// Save a completed task to localStorage
+function saveCompletedTask(taskText) {
+    let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    completedTasks.push(taskText);
+    localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+}
+
+// Retrieve and display completed tasks
+function displayCompletedTasks() {
+    let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+
+    // Loop through completedTasks and display them in the HTML
+    completedTasks.forEach(function (taskText) {
+        const taskItem = document.createElement('li');
+        taskItem.textContent = taskText;
+        completedList.appendChild(taskItem);
+    });
+}
+
+window.addEventListener('load', function () {
+    if (window.location.href.endsWith('completed-tasks.html')) {
+        displayCompletedTasks();
+    }
+});

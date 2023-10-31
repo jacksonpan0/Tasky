@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Tasky</title>
     <link rel="stylesheet" type="text/css" href="/styles.css">
-    <script src="./script.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -24,12 +24,16 @@
         <div class="font"><h1>What are you doing today?</h1></div>
         <div class="buttons">
             <input type="text" id="taskInput" placeholder="Add a new task">
-            <button id="addTask">Add Task</button>
+            <button id="addTask" class="rectangular-button">Add Task</button>
             <ul id="taskList">
                 <!-- Tasks will be added here -->
             </ul>
         </div>
         <div class="taskCount" id="taskCount">Task Count: 0</div>
+        <div class="font"><h1>What you've done today :)</h1></div>
+        <ul id="completedList">
+            <!-- Completed tasks will be added here -->
+        </ul>
     </div>
 
 </body>

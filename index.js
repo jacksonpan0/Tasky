@@ -2,36 +2,32 @@
 const taskInput = document.getElementById('taskInput');
 const addTaskButton = document.getElementById('addTask');
 const taskList = document.getElementById('taskList');
-const completedList = document.getElementById('completedList');
 let taskLimit = 10;
 let taskAmount = 0;
-// Event listener for adding a new task
-addTaskButton.addEventListener('click', function() {
-    const taskText = taskInput.value;
-    if(taskAmount < taskLimit) {
-        if(taskText.trim() !== '') {
-            addTask(taskText);
-            taskInput.value = '';
-            taskAmount++;
-            updateTaskCount();
-        }
+// Function to handle user input and add a new task
+function handleAddTask() {
+    const taskText = taskInput.value.trim();
+    if (taskAmount < taskLimit && taskText !== '') {
+        addTask(taskText);
+        clearInput();
+        taskAmount++;
+        updateTaskCount();
+    }
+}
+// Event listener for adding a new task (button click)
+addTaskButton.addEventListener('click', handleAddTask);
+
+// Event listener for adding a new task when the "Enter" key is pressed in the text input
+taskInput.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        handleAddTask();
     }
 });
 
-// Event listener for adding a new task when the "Enter" key is pressed in the text input
-taskInput.addEventListener('keydown', function(event) {
-    if(event.key === 'Enter') {
-        if(taskAmount < taskLimit) {
-            const taskText = taskInput.value;
-            if(taskText.trim() !== '') {
-                addTask(taskText);
-                taskInput.value = '';
-                taskAmount++;
-                updateTaskCount();
-            }
-        }
-    }
-});
+// Function to clear the input field
+function clearInput() {
+    taskInput.value = '';
+}
 
 // Function to update the task count in the HTML
 function updateTaskCount() {
@@ -42,33 +38,48 @@ function updateTaskCount() {
 // Function to add a new task
 function addTask(taskText) {
     const taskItem = document.createElement('li');
-    taskItem.innerHTML = `
-        ${taskText}
-        <button class="complete">✓</button>
-        <button class="delete">x</button>
-    `;
+    // Create the task text element
+    const taskTextElement = document.createElement('span');
+    taskTextElement.textContent = taskText;
+    // Create the complete and delete buttons
+    const completeButton = document.createElement('button');
+    completeButton.textContent = '✓';
+    completeButton.classList.add('complete');
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'x';
+    deleteButton.classList.add('delete');
+    // Append elements to the task item
+    taskItem.appendChild(taskTextElement);
+    taskItem.appendChild(completeButton);
+    taskItem.appendChild(deleteButton);
+    // Append the task item to the task list
     taskList.appendChild(taskItem);
-
     // Add event listener to delete button
     taskItem.querySelector('.delete').addEventListener('click', function() {
-        taskList.removeChild(taskItem);
-        taskAmount--;
-        updateTaskCount();
+        removeTask(taskItem)
     });
-
     // Add event listener to complete button
     taskItem.querySelector('.complete').addEventListener('click', function() {
-        markComplete(taskItem);
-        taskAmount--;
-        updateTaskCount();
+        markComplete(taskText);
+        removeTask(taskItem);
     });
 }
 
-function markComplete(taskItem) {
-    completedList.appendChild(taskItem);
-    saveCompletedTask(taskItem.innerText);
+// Function to remove a task from the task list
+function removeTask(taskItem) {
+    taskList.removeChild(taskItem);
+    taskAmount--;
+    updateTaskCount();
 }
 
-function goToCompletedTaskPage() {
-    window.location.href = "completed-task.html";
+// Function to mark a task as completed
+function markComplete(taskText) {
+    saveCompletedTask(taskText);
+}
+
+// Function to save completed task to local storage
+function saveCompletedTask(completedTaskText) {
+    let completedTasks = JSON.parse(localStorage.getItem('completedTasks')) || [];
+    completedTasks.push(completedTaskText);
+    localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
 }

@@ -14,7 +14,7 @@ html {
 body {
     font-family: "Quicksand";
     color: white; /* Text color for the links and title */
-    background: black url("/images/Background.jpeg") no-repeat center center fixed;
+    background: black URL("./images/Background.jpeg") no-repeat center center fixed;
     background-size: cover;
     display: flex;
     flex-direction: column;
